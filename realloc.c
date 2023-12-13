@@ -1,62 +1,61 @@
-#include "shell.h"
+#include "shell.H"
 
 /**
- **_memset - fills memory with a constant byte
- *@s: the pointer to the memory area
+ **_memset - fills memory with a steady byte
+ *@s: the pointer to the reminiscence place
  *@b: the byte to fill *s with
- *@n: the amount of bytes to be filled
- *Return: (s) a pointer to the memory area s
+ *@n: the amount of bytes to be crammed
+ *go back: (s) a pointer to the reminiscence place s
  */
-char *_memset(char *s, char b, unsigned int n)
-{
+Char *_memset(char *s, char b, unsigned int n)
+
 	unsigned int i;
 
-	for (i = 0; i < n; i++)
+	for (i = zero; i < n; i++)
 		s[i] = b;
-	return (s);
-}
+	go back (s);
+
 
 /**
  * ffree - frees a string of strings
  * @pp: string of strings
  */
-void ffree(char **pp)
-{
+Void ffree(char **pp)
+
 	char **a = pp;
 
-	if (!pp)
-		return;
+	if (!Pp)
+		go back;
 	while (*pp)
 		free(*pp++);
 	free(a);
-}
+
 
 /**
- * _realloc - reallocates a block of memory
+ * _realloc - reallocates a block of reminiscence
  * @ptr: pointer to previous malloc'ated block
- * @old_size: byte size of previous block
+ * @old_size: byte length of previous block
  * @new_size: byte size of new block
  *
- * Return: pointer to da ol'block nameen.
+ * return: pointer to da ol'block nameen.
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
-{
+Void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+
 	char *p;
 
-	if (!ptr)
+	if (!Ptr)
 		return (malloc(new_size));
-	if (!new_size)
+	if (!New_size)
 		return (free(ptr), NULL);
 	if (new_size == old_size)
 		return (ptr);
 
 	p = malloc(new_size);
-	if (!p)
-		return (NULL);
+	if (!P)
+		go back (NULL);
 
-	old_size = old_size < new_size ? old_size : new_size;
-	while (old_size--)
+	old_size = old_size < new_size ? Old_size : new_size;
+	even as (old_size--)
 		p[old_size] = ((char *)ptr)[old_size];
-	free(ptr);
-	return (p);
-}
+	unfastened(ptr);
+	go back (p);
