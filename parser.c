@@ -1,46 +1,46 @@
-#include "shell.h"
+#include of "shell.H"
 
 /**
- * is_cmd - determines if a file is an executable command
+ * is_cmd - determines if a document is an executable command
  * @info: the info struct
- * @path: path to the file
+ * @course: route to the record
  *
- * Return: 1 if true, 0 otherwise
+ * go back: 1 if authentic, 0 in any other case
  */
-int is_cmd(info_t *info, char *path)
-{
+Int is_cmd(info_t *data, char *direction)
+
 	struct stat st;
 
 	(void)info;
-	if (!path || stat(path, &st))
+	if (!Path stat(direction, &st))
 		return (0);
 
-	if (st.st_mode & S_IFREG)
-	{
+	if (st.St_mode & S_IFREG)
+	
 		return (1);
-	}
+	
 	return (0);
-}
+
 
 /**
  * dup_chars - duplicates characters
- * @pathstr: the PATH string
+ * @pathstr: the route string
  * @start: starting index
- * @stop: stopping index
+ * @forestall: stopping index
  *
- * Return: pointer to new buffer
+ * return: pointer to new buffer
  */
-char *dup_chars(char *pathstr, int start, int stop)
-{
-	static char buf[1024];
-	int i = 0, k = 0;
+Char *dup_chars(char *pathstr, int start, int prevent)
 
-	for (k = 0, i = start; i < stop; i++)
+	static char buf[1024];
+	int i = zero, k = zero;
+
+	for (ok = zero, i = start; i < stop; i++)
 		if (pathstr[i] != ':')
 			buf[k++] = pathstr[i];
 	buf[k] = 0;
 	return (buf);
-}
+
 
 /**
  * find_path - finds this cmd in the PATH string
@@ -50,37 +50,35 @@ char *dup_chars(char *pathstr, int start, int stop)
  *
  * Return: full path of cmd if found or NULL
  */
-char *find_path(info_t *info, char *pathstr, char *cmd)
-{
+Char *find_path(info_t *info, char *pathstr, char *cmd)
+
 	int i = 0, curr_pos = 0;
 	char *path;
 
-	if (!pathstr)
+	if (!Pathstr)
 		return (NULL);
 	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
-	{
-		if (is_cmd(info, cmd))
-			return (cmd);
-	}
-	while (1)
-	{
-		if (!pathstr[i] || pathstr[i] == ':')
-		{
-			path = dup_chars(pathstr, curr_pos, i);
-			if (!*path)
-				_strcat(path, cmd);
+	
+		if (is_cmd(information, cmd))
+			go back (cmd);
+	
+	at the same time as (1)
+	
+		if (!Pathstr[i] 
+			direction = dup_chars(pathstr, curr_pos, i);
+			if (!*course)
+				_strcat(route, cmd);
 			else
-			{
-				_strcat(path, "/");
-				_strcat(path, cmd);
-			}
-			if (is_cmd(info, path))
-				return (path);
-			if (!pathstr[i])
-				break;
+			
+				_strcat(course, "/");
+				_strcat(route, cmd);
+			
+			if (is_cmd(info, course))
+				go back (path);
+			if (!Pathstr[i])
+				spoil;
 			curr_pos = i;
-		}
+		
 		i++;
-	}
+	
 	return (NULL);
-}
