@@ -1,92 +1,91 @@
-#include "shell.h"
+#include "shell.H"
 
 /**
- * _myenv - prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * _myenv - prints the modern-day environment
+ * @information: shape containing capacity arguments. Used to hold
+ *          regular feature prototype.
+ * go back: usually zero
  */
-int _myenv(info_t *info)
-{
-	print_list_str(info->env);
-	return (0);
-}
+Int _myenv(info_t *info)
+
+	print_list_str(data->env);
+	return (zero);
+
 
 /**
- * _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
+ * _getenv - gets the cost of an environ variable
+ * @info: shape containing ability arguments. Used to preserve
+ * @call: env var call
  *
- * Return: the value
+ * return: the fee
  */
-char *_getenv(info_t *info, const char *name)
-{
-	list_t *node = info->env;
+Char *_getenv(info_t *data, const char *name)
+
+	list_t *node = data->env;
 	char *p;
 
-	while (node)
-	{
-		p = starts_with(node->str, name);
+	even as (node)
+	
+		p = starts_with(node->str, call);
 		if (p && *p)
-			return (p);
+			go back (p);
 		node = node->next;
-	}
+	
 	return (NULL);
-}
+
 
 /**
- * _mysetenv - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * _mysetenv - Initialize a new surroundings variable,
+ *             or regulate an current one
+ * @info: structure containing ability arguments. Used to preserve
+ *        steady characteristic prototype.
+ *  go back: constantly 0
  */
-int _mysetenv(info_t *info)
-{
-	if (info->argc != 3)
-	{
-		_eputs("Incorrect number of arguements\n");
-		return (1);
-	}
-	if (_setenv(info, info->argv[1], info->argv[2]))
-		return (0);
+Int _mysetenv(info_t *information)
+
+	if (data->argc != 3)
+	
+		_eputs("wrong wide variety of arguementsn");
+		go back (1);
+	
+	if (_setenv(data, data->argv[1], information->argv[2]))
+		go back (0);
 	return (1);
-}
+
 
 /**
- * _myunsetenv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * _myunsetenv - do away with an environment variable
+ * @info: shape containing capability arguments. Used to preserve
+ *        consistent feature prototype.
+ *  return: always 0
  */
-int _myunsetenv(info_t *info)
-{
+Int _myunsetenv(info_t *info)
+
 	int i;
 
-	if (info->argc == 1)
-	{
-		_eputs("Too few arguements.\n");
+	if (information->argc == 1)
+	
+		_eputs("Too few arguements.N");
 		return (1);
-	}
+	
 	for (i = 1; i <= info->argc; i++)
-		_unsetenv(info, info->argv[i]);
+		_unsetenv(data, info->argv[i]);
 
-	return (0);
-}
+	go back (0);
+
 
 /**
- * populate_env_list - populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * populate_env_list - populates env related list
+ * @info: shape containing ability arguments. Used to keep
+ *          steady characteristic prototype.
+ * go back: constantly 0
  */
-int populate_env_list(info_t *info)
-{
+Int populate_env_list(info_t *information)
+
 	list_t *node = NULL;
 	size_t i;
 
-	for (i = 0; environ[i]; i++)
+	for (i = zero; environ[i]; i++)
 		add_node_end(&node, environ[i], 0);
-	info->env = node;
-	return (0);
-}
+	data->env = node;
+	go back (zero);
